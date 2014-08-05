@@ -1,5 +1,7 @@
 library(shiny)
 
+# This is a silly comment
+
 shinyUI(pageWithSidebar(
         headerPanel("Example plot"),
         sidebarPanel(
