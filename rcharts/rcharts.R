@@ -32,7 +32,7 @@ data(economics, package = "ggplot2")
 econ <- transform(economics, date = as.character(date))
 m1 <- mPlot(x = "date", y = c("psavert", "uempmed"), type = "Line", data = econ)
 m1$set(pointSize = 0, lineWidth = 1)
-m1$save('fig/m1.html', cdn = TRUE)
+m1$save('m1.html', cdn = TRUE)
 m1
 
 #########
@@ -40,5 +40,13 @@ require(reshape2)
 uspexp <- melt(USPersonalExpenditure)
 names(uspexp)[1:2] = c("category", "year")
 x1 <- xPlot(value ~ year, group = "category", data = uspexp, type = "line-dotted")
-x1$save('fig/x1.html', cdn = TRUE)
+x1$save('x1.html', cdn = TRUE)
 x1
+
+#########
+
+map3 <- Leaflet$new()
+map3$setView(c(38.842734, -77.120517), zoom = 13)
+map3$marker(c(38.842734, -77.120517), bindPopup = "<p> Home</p>")
+map3$save('map3.html', cdn = TRUE)
+map3
