@@ -1,3 +1,4 @@
+setwd("/Users/aousabdo/Documents/R/Coursera/DataProducts/rcharts")
 library(rCharts)
 haireye = as.data.frame(HairEyeColor)
 subset(haireye, Sex == 'Male')
@@ -50,3 +51,21 @@ map3$setView(c(38.842734, -77.120517), zoom = 13)
 map3$marker(c(38.842734, -77.120517), bindPopup = "<p> Home</p>")
 map3$save('map3.html', cdn = TRUE)
 map3
+
+##########
+
+usp = reshape2::melt(USPersonalExpenditure)
+# get the decades into a date Rickshaw likes
+usp$Var2 <- as.numeric(as.POSIXct(paste0(usp$Var2, "-01-01")))
+p4 <- Rickshaw$new()
+p4$layer(value ~ Var2, group = "Var1", data = usp, type = "area", width = 560)
+# add a helpful slider this easily; other features TRUE as a default
+p4$set(slider = TRUE)
+p4$save('p4.html', cdn = TRUE)
+p4
+
+###########
+h1 <- hPlot(x = "Wr.Hnd", y = "NW.Hnd", data = MASS::survey, type = c("line", 
+                                                                      "bubble", "scatter"), group = "Clap", size = "Age")
+h1$save('h1.html', cdn = TRUE)
+h1
