@@ -69,3 +69,4 @@ h1 <- hPlot(x = "Wr.Hnd", y = "NW.Hnd", data = MASS::survey, type = c("line",
                                                                       "bubble", "scatter"), group = "Clap", size = "Age")
 h1$save('h1.html', cdn = TRUE)
 h1
+
